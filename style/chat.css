@@ -1,0 +1,37 @@
+.footer .operating-area {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid #ddd;
+}
+.footer .operating-area .right,
+.footer .operating-area .left {
+  display: flex;
+}
+.footer .operating-area .right .link,
+.footer .operating-area .left .link {
+  width: 44px;
+  text-align: center;
+}
+.footer .operating-area .right .link .icon,
+.footer .operating-area .left .link .icon {
+  font-size: 34px;
+  line-height: 54px;
+}
+.footer .operating-area .input-box {
+  flex: 1;
+  height: 54px;
+  padding: 8px 0;
+  box-sizing: border-box;
+}
+.footer .operating-area .input-box .input {
+  font-size: 16px;
+  height: 100%;
+  width: 100%;
+  padding: 0 12px;
+  border: 0 none;
+  outline: none;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
