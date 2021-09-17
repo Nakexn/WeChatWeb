@@ -4,6 +4,7 @@
   justify-content: center;
   align-items: center;
   border-top: 1px solid #ddd;
+  box-sizing: border-box;
 }
 .footer .operating-area .right,
 .footer .operating-area .left {
@@ -17,11 +18,10 @@
 .footer .operating-area .right .link .icon,
 .footer .operating-area .left .link .icon {
   font-size: 34px;
-  line-height: 54px;
 }
 .footer .operating-area .input-box {
   flex: 1;
-  height: 54px;
+  height: 100%;
   padding: 8px 0;
   box-sizing: border-box;
 }
