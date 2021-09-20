@@ -1,0 +1,85 @@
+.header {
+  background-color: #fff;
+}
+
+.content {
+  background-color: #f4f4f4;
+}
+.user-info {
+  display: flex;
+  padding: 16px;
+  border-bottom: 1px solid #eee;
+  background-color: #fff;
+}
+.user-info .avatar img {
+  display: block;
+  width: 68px;
+  height: 68px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+.user-info .main {
+  flex: 1;
+  margin-left: 20px;
+}
+.user-info .main .name {
+  font-size: 20px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+}
+.user-info .main .name .icon {
+  margin-left: 8px;
+  font-size: 14px;
+  color: #03a9f4;
+}
+.user-info .main .nickname,
+.user-info .main .user-id,
+.user-info .main .area {
+  font-size: 14px;
+  color: #7a7a7a;
+}
+
+.set-info,
+.other-info,
+.go-to-chat {
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  line-height: 52px;
+  padding-left: 16px;
+}
+.other-info {
+  margin: 10px 0;
+}
+.set-info .item,
+.other-info .item,
+.go-to-chat .item {
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+}
+.set-info .item:last-child,
+.other-info .item:last-child,
+.go-to-chat .item:last-child {
+  border-bottom: 0 none;
+}
+.set-info .item .icon,
+.other-info .item .icon {
+  margin-right: 12px;
+  font-size: 20px;
+  color: #999;
+}
+.go-to-chat {
+  padding: 0;
+}
+.go-to-chat .item {
+  color: #41619c;
+  justify-content: center;
+}
+.go-to-chat .item .icon {
+  line-height: 52px;
+  font-size: 24px;
+  margin-right: 4px;
+}
