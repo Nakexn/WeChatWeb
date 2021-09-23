@@ -3,7 +3,10 @@ import { addClass, removeClass } from './util/index.js';
 
 const app = document.querySelector('#app');
 
-let currentRoute = window.location.href.replace(baseUrl, '');
+let currentRoute = window.location.pathname.replace('/WeChatWeb', '');
+if (currentRoute === '/') {
+  currentRoute = '/wechat';
+}
 
 let Page = routes[currentRoute];
 window.currentRoute = currentRoute;
