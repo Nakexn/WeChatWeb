@@ -1,8 +1,8 @@
 import WeChat from '../views/WeChat/index.js';
 import ChatDetail from '../views/ChatDetail/index.js';
 
-export const baseUrl = window.location.origin;
-// export const baseUrl = window.location.origin + '/WeChatWeb'; // 线上地址
+// export const baseUrl = window.location.origin;
+export const baseUrl = window.location.origin + '/WeChatWeb'; // 线上地址
 
 export const routes = {
   '/': new WeChat().$el,

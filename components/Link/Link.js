@@ -20,7 +20,7 @@ export default class Link extends Base {
     e.preventDefault();
     window.moving = true;
     const self = this;
-    window.currentRoute = self.href.replace(baseUrl, '');
+    window.currentRoute = self.href;
     const $el = routes[window.currentRoute];
     const $prevEl = window.pageStack[window.pageStack.length - 1];
     addClass($el, 'container-in');
