@@ -7,7 +7,7 @@ export default class ChatItem extends Base {
     const slot = new Link({
       herf: '/wechat/chat',
       slot: `<div class="avatar">
-        <img src="./images/avatar.jpg" alt="张三" />
+        <img src="${baseUrl}/images/avatar.jpg" alt="张三" />
       </div>
       <div class="main">
         <div class="first-column">

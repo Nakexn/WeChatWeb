@@ -1,3 +1,4 @@
+import { baseUrl } from '../../route/index.js';
 import Base from '../Base/Base.js';
 
 export default class ChatDetail extends Base {
@@ -12,7 +13,7 @@ export default class ChatDetail extends Base {
               <li class="message-item left">
                 <div class="avatar">
                   <a href="./user_profile.html">
-                    <img src="../images/avatar.jpg" alt="avatar" />
+                    <img src="${baseUrl}/images/avatar.jpg" alt="avatar" />
                   </a>
                 </div>
                 <div class="message">
@@ -22,7 +23,7 @@ export default class ChatDetail extends Base {
               <li class="message-item right">
                 <div class="avatar">
                   <a href="./user_profile.html">
-                    <img src="../images/avatar_me.jpg" alt="avatar" />
+                    <img src${baseUrl}/images/avatar_me.jpg" alt="avatar" />
                   </a>
                 </div>
                 <div class="message">望在哪天，取决于朔的时刻，以及朔望间的时间间隔</div>
