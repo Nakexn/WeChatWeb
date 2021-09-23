@@ -3,7 +3,12 @@ import Base from '../Base/Base.js';
 export default class NavBar extends Base {
   constructor(props) {
     super();
-    this.template = `<div class="header">
+    let style;
+    let backgroundColor = props.backgroundColor ? props.backgroundColor : undefined;
+    if (backgroundColor) {
+      style = `style="background-color: ${backgroundColor};"`;
+    }
+    this.template = `<div class="header" ${style ? style : ''}>
       <span class="left" style="display: ${props.goBack ? 'flex' : 'none'};">
         <a class="link" href="javascript:history.go(-1)">
           <i class="icon iconfont we-return"></i>

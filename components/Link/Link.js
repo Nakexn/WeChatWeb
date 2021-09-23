@@ -5,9 +5,9 @@ import { addClass, removeClass } from '../../util/index.js';
 export default class Link extends Base {
   constructor(props) {
     super();
-    this.herf = props.herf;
+    this.href = props.href;
     this.template = `<a class="link" 
-    href="${this.herf}">
+    href="${this.href}">
     ${props.slot}
     </a>`;
   }
@@ -21,7 +21,6 @@ export default class Link extends Base {
     window.moving = true;
     const self = this;
     window.currentRoute = self.href.replace(window.location.origin, '');
-    console.log(window.currentRoute);
     const $el =
       routes[
         window.currentRoute.indexOf('WeChatWeb') > 0
