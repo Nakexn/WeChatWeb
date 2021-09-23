@@ -1,7 +1,7 @@
 export default class Base {
-  createNode() {
+  createNode(template) {
     let div = document.createElement('div');
-    div.innerHTML = this.template;
+    div.innerHTML = template ? template : this.template;
     return div.childNodes[0];
   }
 }

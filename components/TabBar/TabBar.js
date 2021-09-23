@@ -28,6 +28,7 @@ export default class TabBar {
         </li>
       </ul>
     </div>`;
+    this.$el = this.createNode(this.template);
   }
   createNode() {
     let div = document.createElement('div');

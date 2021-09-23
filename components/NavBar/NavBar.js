@@ -19,5 +19,6 @@ export default class NavBar extends Base {
         </a>
       </span>
     </div>`;
+    this.$el = this.createNode(this.template);
   }
 }
