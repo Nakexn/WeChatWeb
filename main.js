@@ -3,13 +3,13 @@ import { addClass, removeClass } from './util/index.js';
 
 const app = document.querySelector('#app');
 
-let currentRoute = '/';
+let currentRoute = '/wechat';
 
 let Page = routes[currentRoute];
 window.currentRoute = currentRoute;
 window.pageStack = [Page];
 
-// history.replaceState(null, null, currentRoute);
+history.replaceState(null, null, baseUrl + currentRoute);
 
 app.appendChild(Page);
 
