@@ -1,5 +1,5 @@
 import Base from '../Base/Base.js';
-import { routes, baseUrl } from '../../route/index.js';
+import { routes } from '../../route/index.js';
 import { addClass, removeClass } from '../../util/index.js';
 
 export default class Link extends Base {
@@ -20,9 +20,14 @@ export default class Link extends Base {
     e.preventDefault();
     window.moving = true;
     const self = this;
-    window.currentRoute = self.href.replace(baseUrl, '');
+    window.currentRoute = self.href.replace(window.location.origin, '');
     console.log(window.currentRoute);
-    const $el = routes[window.currentRoute];
+    const $el =
+      routes[
+        window.currentRoute.indexOf('WeChatWeb') > 0
+          ? window.currentRoute.replace('/WeChatWeb', '')
+          : window.currentRoute
+      ];
     const $prevEl = window.pageStack[window.pageStack.length - 1];
     addClass($el, 'container-in');
     window.pageStack.push($el);
