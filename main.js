@@ -36,20 +36,14 @@ history.replaceState(null, null, replaceUrl);
 app.appendChild(Page);
 
 window.addEventListener('popstate', e => {
-  if (window.moving) {
-    return;
-  } else {
-    window.moving = true;
-    const currentPage = pageStack.pop();
-    const $el = pageStack[pageStack.length - 1];
-    app.insertBefore($el, currentPage);
-    setTimeout(() => {
-      addClass(currentPage, 'container-out');
-    }, 0);
-    setTimeout(() => {
-      removeClass(currentPage, 'container-out');
-      app.removeChild(currentPage);
-      window.moving = false;
-    }, 500);
-  }
+  const currentPage = pageStack.pop();
+  const $el = pageStack[pageStack.length - 1];
+  app.insertBefore($el, currentPage);
+  setTimeout(() => {
+    addClass(currentPage, 'container-out');
+  }, 0);
+  setTimeout(() => {
+    removeClass(currentPage, 'container-out');
+    app.removeChild(currentPage);
+  }, 500);
 });

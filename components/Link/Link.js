@@ -18,7 +18,6 @@ export default class Link extends Base {
   }
   go(e) {
     e.preventDefault();
-    window.moving = true;
     const self = this;
     window.currentRoute = self.href.replace(window.location.origin, '');
     const $el =
@@ -44,7 +43,6 @@ export default class Link extends Base {
     }, 0);
     setTimeout(() => {
       $app.removeChild($prevEl);
-      window.moving = false;
     }, 500);
   }
 }
