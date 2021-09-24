@@ -1,4 +1,4 @@
-import { routes } from './route/index.js';
+import { routes, baseUrl } from './route/index.js';
 import { addClass, removeClass } from './util/index.js';
 
 const app = document.querySelector('#app');
@@ -20,7 +20,7 @@ replaceUrl = (isProd ? '/WeChatWeb' : '') + pathname;
 
 let Page;
 
-if (currentRoute in routes) {
+if (routes.hasOwnProperty(currentRoute)) {
   Page = routes[currentRoute];
 } else {
   currentRoute = '/wechat';
