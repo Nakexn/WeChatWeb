@@ -7,7 +7,6 @@ let pathname = window.location.pathname;
 
 let isProd = pathname.indexOf('WeChatWeb') >= 0;
 let currentRoute, replaceUrl;
-console.log(isProd);
 
 if (isProd) {
   pathname = pathname.replace('/WeChatWeb', '');
