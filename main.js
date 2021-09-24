@@ -18,7 +18,16 @@ if (pathname === '/') {
 currentRoute = pathname;
 replaceUrl = (isProd ? '/WeChatWeb' : '') + pathname;
 
-let Page = routes[currentRoute];
+let Page;
+
+if (currentRoute in routes) {
+  Page = routes[currentRoute];
+} else {
+  currentRoute = '/wechat';
+  Page = routes[currentRoute];
+  replaceUrl = (isProd ? '/WeChatWeb' : '') + '/wechat';
+}
+
 window.currentRoute = currentRoute;
 window.pageStack = [Page];
 
