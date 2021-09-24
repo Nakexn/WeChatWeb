@@ -23,14 +23,20 @@ export default class Link extends Base {
     window.currentRoute = self.href.replace(window.location.origin, '');
     const $el =
       routes[
-        window.currentRoute.indexOf('WeChatWeb') > 0
+        window.currentRoute.indexOf('WeChatWeb') >= 0
           ? window.currentRoute.replace('/WeChatWeb', '')
           : window.currentRoute
       ];
     const $prevEl = window.pageStack[window.pageStack.length - 1];
     addClass($el, 'container-in');
     window.pageStack.push($el);
-    window.history.pushState(null, null, window.currentRoute);
+    let pushUrl;
+    if (this.baseUrl.indexOf('WeChatWeb') >= 0) {
+      pushUrl = '/WeChatWeb' + window.currentRoute;
+    } else {
+      pushUrl = window.currentRoute;
+    }
+    window.history.pushState(null, null, pushUrl);
     const $app = document.getElementById('app');
     $app.appendChild($el);
     setTimeout(() => {
