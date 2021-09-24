@@ -18,6 +18,7 @@ currentRoute = pathname;
 replaceUrl = isProd ? '/WeChatWeb' : '' + pathname;
 
 console.log(currentRoute);
+console.log(replaceUrl);
 
 let Page = routes[currentRoute];
 window.currentRoute = currentRoute;
