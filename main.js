@@ -1,24 +1,23 @@
-import { routes, baseUrl } from './route/index.js';
+import { routes } from './route/index.js';
 import { addClass, removeClass } from './util/index.js';
 
 const app = document.querySelector('#app');
 
 let pathname = window.location.pathname;
+
 let isProd = pathname.indexOf('WeChatWeb') >= 0;
 let currentRoute, replaceUrl;
+console.log(isProd);
 
 if (isProd) {
-  pathname.replace('/WeChatWeb', '');
+  pathname = pathname.replace('/WeChatWeb', '');
 }
 if (pathname === '/') {
   pathname = '/wechat';
 }
 
 currentRoute = pathname;
-replaceUrl = isProd ? '/WeChatWeb' : '' + pathname;
-
-console.log(currentRoute);
-console.log(replaceUrl);
+replaceUrl = (isProd ? '/WeChatWeb' : '') + pathname;
 
 let Page = routes[currentRoute];
 window.currentRoute = currentRoute;
