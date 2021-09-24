@@ -31,7 +31,7 @@ export default class Link extends Base {
     addClass($el, 'container-in');
     window.pageStack.push($el);
     let pushUrl;
-    if (this.baseUrl.indexOf('WeChatWeb') >= 0) {
+    if (window.location.href.indexOf('WeChatWeb') >= 0) {
       pushUrl = '/WeChatWeb' + window.currentRoute;
     } else {
       pushUrl = window.currentRoute;
