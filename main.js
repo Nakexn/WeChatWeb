@@ -4,18 +4,24 @@ import { addClass, removeClass } from './util/index.js';
 const app = document.querySelector('#app');
 
 let pathname = window.location.pathname;
+let isProd = pathname.indexOf('WeChatWeb') >= 0;
+let currentRoute, replaceUrl;
 
-let currentRoute = '/';
-
-if (pathname.indexOf('WeChatWeb') >= 0) {
-  currentRoute = pathname.replace('/WeChatWeb', '');
+if (isProd) {
+  pathname.replace('/WeChatWeb', '');
 }
+if (pathname === '/') {
+  pathname = '/wechat';
+}
+
+currentRoute = pathname;
+replaceUrl = isProd ? '/WeChatWeb' : '' + pathname;
 
 let Page = routes[currentRoute];
 window.currentRoute = currentRoute;
 window.pageStack = [Page];
 
-history.replaceState(null, null, baseUrl + currentRoute);
+history.replaceState(null, null, replaceUrl);
 
 app.appendChild(Page);
 
