@@ -46,7 +46,7 @@ class Index extends Page {
               <li class="chat-item">
                 <a class="link router-link">
                   <div class="avatar">
-                    <img src="../../images/avatar.jpg" alt="张三" />
+                    <img src="${$router.base}/images/avatar.jpg" alt="张三" />
                   </div>
                   <div class="main">
                     <div class="first-column">
