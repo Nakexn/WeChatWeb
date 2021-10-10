@@ -1,40 +1,39 @@
-import Page from "../../components/Page.js";
-import config from "./config.js";
-import listData from "./mock.js";
+import Page from '../../components/Page.js';
+import config from './config.js';
+import listData from './mock.js';
 
 class Index extends Page {
   constructor() {
     super();
+  }
+  beforeRender() {
     this.state = {
       title: config.title,
       navBarIcons: config.navBarIcons,
+      listData: listData
     };
   }
-  componentWillMount() {
-    this.state.listData = listData;
-  }
-  render() {
+  render(createDom) {
     const state = this.state;
     const template = `
-    <div class="container"}>
-      <div class="header"}>
+      <div class="header">
         <p class="title">${state.title}</p>
         <span class="right">
           ${state.navBarIcons
             .map(
-              (icon) => `
+              icon => `
               <a class="link icon-button-${icon}" href="javascript:;">
                 <i class="icon iconfont we-${icon}"></i>
               </a>`
             )
-            .join("")}
+            .join('')}
         </span>
       </div>
       <div class="content">
         <ul class="chat-list">
           ${state.listData
             .map(
-              (data) => `
+              data => `
               <li class="chat-item">
                 <a class="link router-link">
                   <div class="avatar">
@@ -53,7 +52,7 @@ class Index extends Page {
                 </a>
               </li>`
             )
-            .join("")}
+            .join('')}
         </ul>
       </div>
       <div class="footer">
@@ -83,9 +82,13 @@ class Index extends Page {
             </a>
           </li>
         </ul>
-      </div>
-    </div>`;
-    return template.trim();
+      </div>`;
+    this.template = template;
+    createDom(template);
+  }
+  mount() {
+    const $el = this.$el;
+    //绑定事件
   }
 }
 
