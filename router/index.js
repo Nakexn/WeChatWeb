@@ -30,9 +30,9 @@ class Router {
   }
   navigateTo(path) {
     if (path === '/') {
-      history.replaceState(null, null, '/');
+      history.replaceState(null, null, this.base);
     } else {
-      history.pushState(null, null, '/#' + path);
+      history.pushState(null, null, this.base + '/#' + path);
     }
     const Page = this.routes[path];
     const page = new Page();
