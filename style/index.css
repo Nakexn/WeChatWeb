@@ -42,11 +42,11 @@ a {
   left: 0;
 }
 
-.container-in {
+.container-x-100 {
   transform: translateX(100%);
 }
-.container-out {
-  transform: translateX(100%);
+.container-x-minus-100 {
+  transform: translateX(-100%);
 }
 
 .header {

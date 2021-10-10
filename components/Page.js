@@ -18,7 +18,7 @@ export default class Page {
     const self = this;
     const container = document.createElement('div');
     container.className = 'container';
-    container.dataset['weId'] = self.uid.toString();
+    container.dataset['wxId'] = self.uid.toString();
     container.innerHTML = template;
     self.$el = container;
   }

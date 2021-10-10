@@ -17,6 +17,15 @@ class Index extends Page {
     const state = this.state;
     const template = `
       <div class="header">
+        ${
+          $router.len > 0
+            ? `<span class="left">
+          <a class="link" href="javascript:history.go(-1)">
+            <i class="icon iconfont we-return"></i>
+          </a>
+        </span>`
+            : ''
+        }
         <p class="title">${state.title}</p>
         <span class="right">
           ${state.navBarIcons
@@ -88,6 +97,13 @@ class Index extends Page {
   }
   mount() {
     const $el = this.$el;
+    const $list = $el.querySelectorAll('.chat-list .router-link');
+    $list.forEach(item => {
+      item.addEventListener('click', e => {
+        $router.navigateTo('/chat');
+      });
+    });
+
     //绑定事件
   }
 }
