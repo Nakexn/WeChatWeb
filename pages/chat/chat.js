@@ -2,7 +2,7 @@ import Page from '../../components/Page.js';
 import config from './config.js';
 import chatDetail from './mock.js';
 
-class Index extends Page {
+class Chat extends Page {
   constructor() {
     super();
   }
@@ -20,7 +20,7 @@ class Index extends Page {
         ${
           $router.len > 0
             ? `<span class="left">
-          <a class="link" href="javascript:history.go(-1)">
+          <a class="link go-back" href="javascript:;">
             <i class="icon iconfont we-return"></i>
           </a>
         </span>`
@@ -65,8 +65,15 @@ class Index extends Page {
   }
   mount() {
     const $el = this.$el;
-    //绑定事件
+
+    const $goBack = $el.querySelector('.header .go-back');
+    if ($goBack) {
+      $goBack.addEventListener('click', e => {
+        e.preventDefault();
+        $router.navigateBack();
+      });
+    }
   }
 }
 
-export default Index;
+export default Chat;

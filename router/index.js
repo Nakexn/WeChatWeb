@@ -16,6 +16,7 @@ class Router {
     this.pageStack = [];
     this.len = 0;
     this.$app = app;
+    this.currentRoute = '';
     window.addEventListener('popstate', e => {
       const $el = this.pageStack.pop();
       const $prev = this.pageStack[this.pageStack.length - 1];
@@ -34,6 +35,7 @@ class Router {
     } else {
       history.pushState(null, null, this.base + '/#' + path);
     }
+    this.currentRoute = path;
     const Page = this.routes[path];
     const page = new Page();
     const $el = page.$el;
@@ -49,8 +51,32 @@ class Router {
     }
     this.$app.appendChild($el);
   }
-  switchTab(path) {}
-  navigateBack(delta) {}
+  switchTab(path) {
+    if (path === this.currentRoute) return;
+    if (path === '/') {
+      history.replaceState(null, null, this.base);
+    } else {
+      history.replaceState(null, null, this.base + '/#' + path);
+    }
+    console.log(path);
+    this.currentRoute = path;
+    this.pageStack = [];
+    this.len = 0;
+    const Page = this.routes[path];
+    const page = new Page();
+    const $el = page.$el;
+    this.pageStack = [$el];
+    this.len++;
+    this.$app.innerHTML = '';
+    this.$app.appendChild($el);
+  }
+  navigateBack(delta) {
+    if (delta && typeof delta === 'number' && delta < 0) {
+      history.go(number);
+    } else {
+      history.go(-1);
+    }
+  }
 }
 
 export default Router;

@@ -2,7 +2,7 @@ import Page from '../../components/Page.js';
 import config from './config.js';
 import listData from './mock.js';
 
-class Index extends Page {
+class Find extends Page {
   constructor() {
     super();
   }
@@ -20,7 +20,7 @@ class Index extends Page {
         ${
           $router.len > 0
             ? `<span class="left">
-          <a class="link go-back" href="javascript:;">
+          <a class="link" href="javascript:history.go(-1)">
             <i class="icon iconfont we-return"></i>
           </a>
         </span>`
@@ -38,37 +38,13 @@ class Index extends Page {
             .join('')}
         </span>
       </div>
-      <div class="content">
-        <ul class="chat-list">
-          ${state.listData
-            .map(
-              data => `
-              <li class="chat-item">
-                <a class="link router-link" data-link-to=${data.link} href="javascript:;">
-                  <div class="avatar">
-                    <img src="${$router.base}/images/avatar.jpg" alt="张三" />
-                  </div>
-                  <div class="main">
-                    <div class="first-column">
-                      <div class="name ellipsis">${data.name}</div>
-                      <div class="message ellipsis">${data.message}</div>
-                    </div>
-                    <div class="second-column">
-                      <div class="time">${data.time}</div>
-                      <div class="status"></div>
-                    </div>
-                  </div>
-                </a>
-              </li>`
-            )
-            .join('')}
-        </ul>
+      <div class="content" style="height: 100%; background: #fff;">
       </div>
       <div class="footer">
         <ul class="tab-bar">
           <li class="item">
-            <a class="link router-link selected" data-link-to="/" href="javascript:;">
-              <i class="icon iconfont we-interactive_fill"></i>
+            <a class="link router-link" data-link-to="/" href="javascript:;">
+              <i class="icon iconfont we-interactive"></i>
               <span class="title">微信</span>
             </a>
           </li>
@@ -79,8 +55,8 @@ class Index extends Page {
             </a>
           </li>
           <li class="item">
-            <a class="link router-link" data-link-to="/find" href="javascript:;">
-              <i class="icon iconfont we-integral"></i>
+            <a class="link router-link selected" data-link-to="/find" href="javascript:;">
+              <i class="icon iconfont we-integral_fill"></i>
               <span class="title">发现</span>
             </a>
           </li>
@@ -98,22 +74,6 @@ class Index extends Page {
   mount() {
     const $el = this.$el;
 
-    const $goBack = $el.querySelector('.header .go-back');
-    if ($goBack) {
-      $goBack.addEventListener('click', e => {
-        e.preventDefault();
-        $router.navigateBack();
-      });
-    }
-
-    const $list = $el.querySelectorAll('.chat-list .router-link');
-    $list.forEach(item => {
-      item.addEventListener('click', e => {
-        e.preventDefault();
-        $router.navigateTo(item.dataset.linkTo);
-      });
-    });
-
     const $tabs = $el.querySelectorAll('.tab-bar .router-link');
     $tabs.forEach(item => {
       item.addEventListener('click', e => {
@@ -121,9 +81,7 @@ class Index extends Page {
         $router.switchTab(item.dataset.linkTo);
       });
     });
-
-    //绑定事件
   }
 }
 
-export default Index;
+export default Find;
