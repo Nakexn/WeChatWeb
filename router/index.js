@@ -18,6 +18,7 @@ class Router {
     this.$app = app;
     this.currentRoute = '';
     window.addEventListener('popstate', e => {
+      if (this.len <= 1) return;
       const $el = this.pageStack.pop();
       const $prev = this.pageStack[this.pageStack.length - 1];
       this.len--;
