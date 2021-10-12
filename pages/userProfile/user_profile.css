@@ -1,3 +1,7 @@
+.header.profile {
+  background-color: #fff;
+  border-bottom: 0 none;
+}
 .content.profile {
   background-color: #f4f4f4;
 }

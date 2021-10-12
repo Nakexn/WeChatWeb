@@ -15,6 +15,7 @@ class Chat extends Page {
   }
   render(createDom) {
     const state = this.state;
+    const data = state.chatDetail.data;
     const template = `
       <div class="header">
         ${
@@ -38,7 +39,38 @@ class Chat extends Page {
             .join('')}
         </span>
       </div>
-      <div class="content" style="height: 100%; background: #fff;">
+      <div class="content chat-detail">
+        ${data
+          .map(
+            item => `
+            <ul class="message-list">
+              <li class="item">
+                <div class="time">${item.time}</div>
+                <div class="main">
+                  <ul class="message-group">
+                    ${item.chat
+                      .map(
+                        item => `
+                      <li class="message-item ${item.me ? 'right' : 'left'}">
+                        <div class="avatar">
+                          <a class="link router-link" data-link-to=${item.link} href="javascript:;">
+                            <img src="${$router.base + item.avatar}" alt="avatar" />
+                          </a>
+                        </div>
+                        <div class="message">
+                          ${item.message}
+                        </div>
+                      </li>
+                    `
+                      )
+                      .join('')}
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          `
+          )
+          .join('')}
       </div>
       <div class="footer">
         <div class="operating-area">
@@ -73,6 +105,14 @@ class Chat extends Page {
         $router.navigateBack();
       });
     }
+
+    const $avatar = $el.querySelectorAll('.message-item .avatar .router-link');
+    $avatar.forEach(item => {
+      item.addEventListener('click', e => {
+        e.preventDefault();
+        $router.navigateTo(item.dataset.linkTo);
+      });
+    });
   }
 }
 

@@ -2,7 +2,7 @@ import Page from '../../components/Page.js';
 import config from './config.js';
 import listData from './mock.js';
 
-class Find extends Page {
+class Me extends Page {
   constructor() {
     super();
   }
@@ -84,4 +84,4 @@ class Find extends Page {
   }
 }
 
-export default Find;
+export default Me;
