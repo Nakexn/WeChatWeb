@@ -34,7 +34,7 @@
 .content .chat-item .link {
   display: flex;
   padding: 0 16px;
-  border-bottom: 1px solid #e8e8e8;
+  border-bottom: 1px solid #eee;
 }
 .content .chat-item .avatar {
   padding: 12px 12px 12px 0;
