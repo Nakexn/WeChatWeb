@@ -59,7 +59,6 @@ class Router {
     } else {
       history.replaceState(null, null, this.base + '/#' + path);
     }
-    console.log(path);
     this.currentRoute = path;
     this.pageStack = [];
     this.len = 0;
