@@ -1,6 +1,6 @@
 import { addClass, removeClass } from '../util/index.js';
-const ANIMATE_IN = 'container-x-100';
-const ANIMATE_OUT = 'container-x-minus-100';
+const ANIMATE_IN = 'translate-x-100x';
+const ANIMATE_OUT = 'translate-x-minus-100x';
 const ANIMATE_TIME = 500;
 
 class Router {

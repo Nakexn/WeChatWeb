@@ -42,10 +42,10 @@ a {
   left: 0;
 }
 
-.container-x-100 {
+.translate-x-100x {
   transform: translateX(100%);
 }
-.container-x-minus-100 {
+.translate-x-minus-100x {
   transform: translateX(-100%);
 }
 
