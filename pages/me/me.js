@@ -18,7 +18,7 @@ class Me extends Page {
     const template = `
       <div class="header">
         ${
-          $router.len > 0
+          $router.len > 1
             ? `<span class="left">
           <a class="link" href="javascript:history.go(-1)">
             <i class="icon iconfont we-return"></i>

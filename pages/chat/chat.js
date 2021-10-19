@@ -19,7 +19,7 @@ class Chat extends Page {
     const template = `
       <div class="header">
         ${
-          $router.len > 0
+          $router.len > 1
             ? `<span class="left">
           <a class="link go-back" href="javascript:;">
             <i class="icon iconfont we-return"></i>

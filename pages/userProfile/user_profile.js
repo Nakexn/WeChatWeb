@@ -19,7 +19,7 @@ class UserProfile extends Page {
     const template = `
       <div class="header profile">
         ${
-          $router.len > 0
+          $router.len > 1
             ? `<span class="left">
           <a class="link go-back" href="javascript:;">
             <i class="icon iconfont we-return"></i>
@@ -92,7 +92,6 @@ class UserProfile extends Page {
   }
   mount() {
     const $el = this.$el;
-
     const $goBack = $el.querySelector('.header .go-back');
     if ($goBack) {
       $goBack.addEventListener('click', e => {

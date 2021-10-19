@@ -38,10 +38,10 @@ class Router {
     }
     this.currentRoute = path;
     const Page = this.routes[path];
+    this.len++;
     const page = new Page();
     const $el = page.$el;
     this.pageStack.push($el);
-    this.len++;
     if (this.len > 1) {
       const $prev = this.pageStack[this.len - 2];
       addClass($el, ANIMATE_IN);
