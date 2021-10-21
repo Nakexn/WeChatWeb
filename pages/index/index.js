@@ -49,6 +49,7 @@ class Index extends Page {
         </span>
       </div>
       <div class="content">
+
         <ul class="chat-list">
           ${
             state.listData
@@ -74,7 +75,9 @@ class Index extends Page {
               </li>`
                   )
                   .join('')
-              : ''
+              : `<div class="loading">
+              <img src="/images/loading.gif" alt="loading"/>
+            </div>`
           }
         </ul>
       </div>

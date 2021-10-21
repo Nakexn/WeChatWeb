@@ -54,3 +54,13 @@ a {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.loading {
+  padding-top: calc((100vh - 44px - 54px - 32px) / 2);
+}
+
+.loading img {
+  display: block;
+  margin: 0 auto;
+  width: 32px;
+}
