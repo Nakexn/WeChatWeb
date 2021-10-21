@@ -76,7 +76,7 @@ class Index extends Page {
                   )
                   .join('')
               : `<div class="loading">
-              <img src="/images/loading.gif" alt="loading"/>
+              <img src="${$router.base}/images/loading.gif" alt="loading"/>
             </div>`
           }
         </ul>
