@@ -30,14 +30,38 @@ class Router {
       }, ANIMATE_TIME);
     });
   }
+  resolveUrl(path) {
+    let route = '';
+    let search = '';
+    let params = {};
+    if (path && typeof path === 'string') {
+      if (path.indexOf('?') > 0) {
+        route = path.split('?')[0];
+        search = path.split('?')[1];
+        search.split('&').forEach(item => {
+          const param = item.split('=');
+          params[param[0]] = param[1];
+        });
+      } else {
+        route = path;
+      }
+    }
+    this.route = route;
+    this.search = search;
+    this.params = params;
+  }
   navigateTo(path) {
-    if (path === '/') {
+    this.resolveUrl(path);
+    console.log(this);
+    const route = this.route;
+    const search = this.search;
+    if (route === '/') {
       history.replaceState(null, null, this.base);
     } else {
-      history.pushState(null, null, this.base + '/#' + path);
+      history.pushState(null, null, `${this.base}/#${route}${search ? '?' + search : ''}`);
     }
-    this.currentRoute = path;
-    const Page = this.routes[path];
+    this.currentRoute = route;
+    const Page = this.routes[route];
     this.len++;
     const page = new Page();
     const $el = page.$el;
@@ -53,6 +77,7 @@ class Router {
     this.$app.appendChild($el);
   }
   switchTab(path) {
+    this.resolveUrl(path);
     if (path === this.currentRoute) return;
     if (path === '/') {
       history.replaceState(null, null, this.base);

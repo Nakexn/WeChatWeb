@@ -4,14 +4,21 @@ import userData from './mock.js';
 
 class UserProfile extends Page {
   constructor() {
-    super();
+    super({
+      state: {
+        title: '',
+        navBarIcons: config.navBarIcons,
+        userData: {}
+      }
+    });
   }
   beforeRender() {
-    this.state = {
-      title: config.title,
-      navBarIcons: config.navBarIcons,
-      userData: userData
-    };
+    const data = userData.find(user => {
+      return user.id == $router.params.id;
+    });
+    this.setState({
+      userData: data
+    });
   }
   render(createDom) {
     const state = this.state;

@@ -4,14 +4,22 @@ import chatDetail from './mock.js';
 
 class Chat extends Page {
   constructor() {
-    super();
+    super({
+      state: {
+        title: '',
+        navBarIcons: config.navBarIcons,
+        listData: {}
+      }
+    });
   }
   beforeRender() {
-    this.state = {
-      title: chatDetail.title,
-      navBarIcons: config.navBarIcons,
-      chatDetail: chatDetail
-    };
+    const data = chatDetail.find(detail => {
+      return detail.id == $router.params.id;
+    });
+    this.setState({
+      title: data.title,
+      chatDetail: data
+    });
   }
   render(createDom) {
     const state = this.state;
@@ -51,9 +59,11 @@ class Chat extends Page {
                     ${item.chat
                       .map(
                         item => `
-                      <li class="message-item ${item.me ? 'right' : 'left'}">
+                      <li class="message-item ${item.id ? 'left' : 'right'}">
                         <div class="avatar">
-                          <a class="link router-link" data-link-to=${item.link} href="javascript:;">
+                          <a class="link router-link" data-link-to=${item.link}?id=${
+                          item.id ? item.id : '0'
+                        } href="javascript:;">
                             <img src="${$router.base + item.avatar}" alt="avatar" />
                           </a>
                         </div>

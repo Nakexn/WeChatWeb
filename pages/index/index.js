@@ -57,7 +57,7 @@ class Index extends Page {
                   .map(
                     data => `
               <li class="chat-item">
-                <a class="link router-link" data-link-to=${data.link} href="javascript:;">
+                <a class="link router-link" data-link-to=${data.link}?id=${data.id} href="javascript:;">
                   <div class="avatar">
                     <img src="${$router.base + data.avatar}" alt="avatar" />
                   </div>
