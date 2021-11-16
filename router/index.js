@@ -31,19 +31,20 @@ class Router {
     });
   }
   resolveUrl(path) {
+    let to = path ? path : window.location.href.replace(this.base, '').replace('/#', '');
     let route = '';
     let search = '';
     let params = {};
-    if (path && typeof path === 'string') {
-      if (path.indexOf('?') > 0) {
-        route = path.split('?')[0];
-        search = path.split('?')[1];
+    if (to && typeof to === 'string') {
+      if (to.indexOf('?') > 0) {
+        route = to.split('?')[0];
+        search = to.split('?')[1];
         search.split('&').forEach(item => {
           const param = item.split('=');
           params[param[0]] = param[1];
         });
       } else {
-        route = path;
+        route = to;
       }
     }
     this.route = route;

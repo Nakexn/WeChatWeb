@@ -10,4 +10,4 @@ const router = new Router({
 
 window.$router = router;
 
-router.navigateTo('/');
+router.navigateTo();

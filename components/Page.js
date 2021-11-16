@@ -9,23 +9,12 @@ export default class Page {
     const createDom = self.createDom.bind(self);
     self.uid = uid++;
     self.initState(options ? options.state : undefined);
-    self.onStateChange();
+    self.listenStateChange();
     self.beforeRender();
     self.render(createDom);
     self.mount();
     self.mounted = true;
   }
-  beforeRender() {}
-  render() {}
-  createDom(template) {
-    const self = this;
-    const container = document.createElement('div');
-    container.className = 'container';
-    container.dataset['wxId'] = self.uid.toString();
-    container.innerHTML = template;
-    self.$el = container;
-  }
-  mount() {}
   initState(state) {
     const self = this;
     if (state && state instanceof Object) {
@@ -34,7 +23,7 @@ export default class Page {
       self.state = {};
     }
   }
-  onStateChange() {
+  listenStateChange() {
     const self = this;
     for (const propName in self.state) {
       let value = self.state[propName];
@@ -53,6 +42,18 @@ export default class Page {
       }
     }
   }
+  beforeRender() {}
+  render() {}
+  createDom(template) {
+    const self = this;
+    const container = document.createElement('div');
+    container.className = 'container';
+    container.dataset['wxId'] = self.uid.toString();
+    container.innerHTML = template;
+    self.$el = container;
+  }
+  mount() {}
+
   setState(newState) {
     const state = this.state;
     for (const propName in newState) {
@@ -64,12 +65,12 @@ export default class Page {
   update() {
     const self = this;
     const createDom = self.createDom.bind(self);
-    if (this.mounted) {
-      const oldEl = this.$el;
+    if (self.mounted) {
+      const oldEl = self.$el;
       self.render(createDom);
       self.mount();
-      const newEl = this.$el;
-      const el = document.querySelector(`div.container[data-wx-id="${this.uid}"]`);
+      const newEl = self.$el;
+      const el = document.querySelector(`div.container[data-wx-id="${self.uid}"]`);
       if (el) {
         const parentEl = el.parentElement;
         parentEl.replaceChild(newEl, oldEl);
