@@ -1,8 +1,8 @@
-import Page from '../../components/Page.js';
+import Componet from '../../../components/Componet.js';
 import config from './config.js';
 import chatDetail from './mock.js';
 
-class Chat extends Page {
+class Chat extends Componet {
   constructor() {
     super({
       state: {
@@ -14,7 +14,7 @@ class Chat extends Page {
   }
   beforeRender() {
     const data = chatDetail.find(detail => {
-      return detail.id == $router.params.id;
+      return detail.id == $router.route.params.id;
     });
     this.setState({
       title: data.title,
@@ -64,7 +64,7 @@ class Chat extends Page {
                           <a class="link router-link" data-link-to=${item.link}?id=${
                           item.id ? item.id : '0'
                         } href="javascript:;">
-                            <img src="${$router.base + item.avatar}" alt="avatar" />
+                            <img src="${$router._getBase() + item.avatar}" alt="avatar" />
                           </a>
                         </div>
                         <div class="message">
@@ -104,6 +104,7 @@ class Chat extends Page {
       </div>`;
     this.template = template;
     createDom(template);
+    this.$el.classList.add('container');
   }
   mount() {
     const $el = this.$el;

@@ -1,8 +1,8 @@
-import Page from '../../components/Page.js';
+import Componet from '../../../components/Componet.js';
 import config from './config.js';
 import userData from './mock.js';
 
-class UserProfile extends Page {
+class UserProfile extends Componet {
   constructor() {
     super({
       state: {
@@ -14,7 +14,7 @@ class UserProfile extends Page {
   }
   beforeRender() {
     const data = userData.find(user => {
-      return user.id == $router.params.id;
+      return user.id == $router.route.params.id;
     });
     this.setState({
       userData: data
@@ -50,7 +50,7 @@ class UserProfile extends Page {
         <div class="user_profile">
           <div class="user-info">
             <div class="avatar">
-              <img src="${$router.base + userData.avatar}" alt="avatar" />
+              <img src="${$router._getBase() + userData.avatar}" alt="avatar" />
             </div>
             <div class="main">
               <div class="name ellipsis">
@@ -96,6 +96,7 @@ class UserProfile extends Page {
       </div>`;
     this.template = template;
     createDom(template);
+    this.$el.classList.add('container');
   }
   mount() {
     const $el = this.$el;

@@ -1,7 +1,7 @@
-/* @import url('/pages/index/index.css');
-@import url('/pages/chat/chat.css');
-@import url('/pages/userProfile/user_profile.css'); */
+/* @import url('/pages/home/index.css');
+@import url('/pages/chat/index.css');
+@import url('/pages/user-profile/index.css'); */
 
-@import url('/WeChatWeb/pages/index/index.css');
-@import url('/WeChatWeb/pages/chat/chat.css');
-@import url('/WeChatWeb/pages/userProfile/user_profile.css');
+@import url('/WeChatWeb/pages/home/index.css');
+@import url('/WeChatWeb/pages/chat/index.css');
+@import url('/WeChatWeb/pages/user-profile/index.css');

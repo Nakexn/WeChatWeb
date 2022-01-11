@@ -1,4 +1,4 @@
-import Page from '../../components/Page.js';
+import Page from '../../../components/Page.js';
 import config from './config.js';
 import listData from './mock.js';
 
@@ -17,15 +17,6 @@ class Find extends Page {
     const state = this.state;
     const template = `
       <div class="header">
-        ${
-          $router.len > 1
-            ? `<span class="left">
-          <a class="link" href="javascript:history.go(-1)">
-            <i class="icon iconfont we-return"></i>
-          </a>
-        </span>`
-            : ''
-        }
         <p class="title">${state.title}</p>
         <span class="right">
           ${state.navBarIcons

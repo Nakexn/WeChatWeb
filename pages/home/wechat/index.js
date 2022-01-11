@@ -1,8 +1,8 @@
-import Page from '../../components/Page.js';
+import Componet from '../../../components/Componet.js';
 import config from './config.js';
 import listData from './mock.js';
 
-class Index extends Page {
+class Index extends Componet {
   constructor() {
     super({
       state: {
@@ -23,15 +23,6 @@ class Index extends Page {
     const state = this.state;
     const template = state => `
       <div class="header">
-        ${
-          $router.len > 1
-            ? `<span class="left">
-          <a class="link go-back" href="javascript:;">
-            <i class="icon iconfont we-return"></i>
-          </a>
-        </span>`
-            : ''
-        }
         <p class="title">${state.title}</p>
         <span class="right">
           ${
@@ -59,7 +50,7 @@ class Index extends Page {
               <li class="chat-item">
                 <a class="link router-link" data-link-to=${data.link}?id=${data.id} href="javascript:;">
                   <div class="avatar">
-                    <img src="${$router.base + data.avatar}" alt="avatar" />
+                    <img src="${$router._getBase() + data.avatar}" alt="avatar" />
                   </div>
                   <div class="main">
                     <div class="first-column">
@@ -76,37 +67,9 @@ class Index extends Page {
                   )
                   .join('')
               : `<div class="loading">
-              <img src="${$router.base}/images/loading.gif" alt="loading"/>
+              <img src="${$router._getBase()}/images/loading.gif" alt="loading"/>
             </div>`
           }
-        </ul>
-      </div>
-      <div class="footer">
-        <ul class="tab-bar">
-          <li class="item">
-            <a class="link router-link selected" data-link-to="/" href="javascript:;">
-              <i class="icon iconfont we-interactive_fill"></i>
-              <span class="title">微信</span>
-            </a>
-          </li>
-          <li class="item">
-            <a class="link router-link" data-link-to="/address_book" href="javascript:;">
-              <i class="icon iconfont we-addressbook"></i>
-              <span class="title">通讯录</span>
-            </a>
-          </li>
-          <li class="item">
-            <a class="link router-link" data-link-to="/find" href="javascript:;">
-              <i class="icon iconfont we-integral"></i>
-              <span class="title">发现</span>
-            </a>
-          </li>
-          <li class="item">
-            <a class="link router-link" data-link-to="/me" href="javascript:;">
-              <i class="icon iconfont we-mine"></i>
-              <span class="title">我</span>
-            </a>
-          </li>
         </ul>
       </div>`;
     this.template = template(state);
@@ -127,14 +90,6 @@ class Index extends Page {
       item.addEventListener('click', e => {
         e.preventDefault();
         $router.navigateTo(item.dataset.linkTo);
-      });
-    });
-
-    const $tabs = $el.querySelectorAll('.tab-bar .router-link');
-    $tabs.forEach(item => {
-      item.addEventListener('click', e => {
-        e.preventDefault();
-        $router.switchTab(item.dataset.linkTo);
       });
     });
 

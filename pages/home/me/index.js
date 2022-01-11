@@ -1,8 +1,8 @@
-import Page from '../../components/Page.js';
+import Page from '../../../components/Page.js';
 import config from './config.js';
 import listData from './mock.js';
 
-class AddressBook extends Page {
+class Me extends Page {
   constructor() {
     super();
   }
@@ -17,15 +17,6 @@ class AddressBook extends Page {
     const state = this.state;
     const template = `
       <div class="header">
-        ${
-          $router.len > 1
-            ? `<span class="left">
-          <a class="link" href="javascript:history.go(-1)">
-            <i class="icon iconfont we-return"></i>
-          </a>
-        </span>`
-            : ''
-        }
         <p class="title">${state.title}</p>
         <span class="right">
           ${state.navBarIcons
@@ -49,8 +40,8 @@ class AddressBook extends Page {
             </a>
           </li>
           <li class="item">
-            <a class="link router-link selected" data-link-to="/address_book" href="javascript:;">
-              <i class="icon iconfont we-addressbook_fill"></i>
+            <a class="link router-link" data-link-to="/address_book" href="javascript:;">
+              <i class="icon iconfont we-addressbook"></i>
               <span class="title">通讯录</span>
             </a>
           </li>
@@ -61,8 +52,8 @@ class AddressBook extends Page {
             </a>
           </li>
           <li class="item">
-            <a class="link router-link" data-link-to="/me" href="javascript:;">
-              <i class="icon iconfont we-mine"></i>
+            <a class="link router-link selected" data-link-to="/me" href="javascript:;">
+              <i class="icon iconfont we-mine_fill"></i>
               <span class="title">我</span>
             </a>
           </li>
@@ -84,4 +75,4 @@ class AddressBook extends Page {
   }
 }
 
-export default AddressBook;
+export default Me;

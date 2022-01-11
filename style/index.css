@@ -29,17 +29,25 @@ a {
   position: relative;
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
+.page-wrapper {
   width: 100%;
   height: 100%;
   transform: translateX(0);
-  transition: 0.5s transform ease;
+  transition: 0.3s transform ease;
   will-change: transform;
   position: absolute;
   top: 0;
   left: 0;
+}
+
+.component {
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
 }
 
 .translate-x-100x {
@@ -55,6 +63,11 @@ a {
   text-overflow: ellipsis;
 }
 
+.footer {
+  height: 54px;
+  background-color: #f8f8f8;
+}
+
 .loading {
   padding-top: calc((100vh - 44px - 54px - 32px) / 2);
 }
@@ -63,4 +76,8 @@ a {
   display: block;
   margin: 0 auto;
   width: 32px;
+}
+
+.flex1 {
+  flex: 1;
 }

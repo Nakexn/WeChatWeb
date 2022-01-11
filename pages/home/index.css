@@ -1,3 +1,7 @@
+.container .tab-panel {
+  flex: 1;
+}
+
 .header {
   height: 44px;
   background-color: #f4f4f4;
@@ -85,33 +89,30 @@
   color: #999;
 }
 
-.footer {
-  height: 54px;
+.home-tab-bar {
   background-color: #f8f8f8;
-}
-.footer .tab-bar {
-  height: 100%;
+  height: 54px;
   display: flex;
   justify-content: space-around;
   align-items: center;
   border-top: 1px solid #ddd;
   box-sizing: border-box;
 }
-.footer .tab-bar .item .link {
+.home-tab-bar .item .link {
   display: flex;
   flex-direction: column;
   align-items: center;
   line-height: 1;
   color: #666;
 }
-.footer .tab-bar .item .link.selected {
+.home-tab-bar .item .link.selected {
   color: green;
 }
-.footer .tab-bar .item .link .icon {
+.home-tab-bar .item .link .icon {
   font-size: 30px;
   margin-top: -2px;
 }
-.footer .tab-bar .item .link .title {
+.home-tab-bar .item .link .title {
   font-size: 12px;
   margin-top: 2px;
 }
