@@ -6,5 +6,5 @@ const router = new Router({ el, routes });
 
 window.$router = router;
 
-router.base('/WeChatWeb');
+// router.base('/WeChatWeb');
 router.start();

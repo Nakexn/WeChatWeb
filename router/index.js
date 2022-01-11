@@ -84,8 +84,7 @@ class Router {
 
   navigateTo(path, init = false) {
     const pageBase = this._getBase();
-    path.replace(pageBase + '/#', '');
-    const routePath = path;
+    const routePath = path.replace(pageBase + '/#', '');
     let route = new Route(routePath, this);
     this.route = route;
 
@@ -131,8 +130,7 @@ class Router {
   switchTab(path) {
     if (this.route.route === path) return;
     const pageBase = this._getBase();
-    path.replace(pageBase + '/#', '');
-    const routePath = path;
+    const routePath = path.replace(pageBase + '/#', '');
     let route = new Route(routePath, this);
     this.route = route;
 
