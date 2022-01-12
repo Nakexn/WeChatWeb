@@ -20,3 +20,15 @@ export function hasClass(el, className) {
   let reg = new RegExp('(^|\\s)' + className + '(\\s|$)');
   return reg.test(el.className);
 }
+
+export function removeSiblingClass(el, className) {
+  let r = [];
+  let p = el.parentNode.parentNode.children;
+  for (let i = 0; i < p.length; i++) {
+    let tab = p[i].querySelector('a');
+    if (tab !== el) r.push(tab);
+  }
+  r.forEach(item => {
+    removeClass(item, className);
+  });
+}
