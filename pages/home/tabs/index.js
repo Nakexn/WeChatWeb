@@ -14,7 +14,7 @@ class Index extends Component {
       </div>
       <ul class="home-tab-bar">
         <li class="item">
-          <a class="link router-link selected" data-link-to="/home/wechat" data-link-type="switch" href="javascript:;">
+          <a class="link router-link" data-link-to="/home/wechat" data-link-type="switch" href="javascript:;">
             <i class="icon iconfont we-interactive"></i>
             <span class="title">微信</span>
           </a>

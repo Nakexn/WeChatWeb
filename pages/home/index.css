@@ -89,6 +89,10 @@
   color: #999;
 }
 
+.tab-panel {
+  background-color: #fff;
+}
+
 .home-tab-bar {
   background-color: #f8f8f8;
   height: 54px;

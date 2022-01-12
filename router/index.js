@@ -16,7 +16,6 @@ class Router {
     this.routes = options.routes ? options.routes : {};
     this.pageStack = [];
     this.len = 0;
-    this.current = '';
 
     this._base = '';
 
@@ -48,6 +47,14 @@ class Router {
           const $prev = document.querySelector(`div[data-page-id='${prevId}']`);
           const elId = this.pageStack[pageIndex].pageId;
           const $el = document.querySelector(`div[data-page-id='${elId}']`);
+
+          const pageBase = this._getBase();
+          const routePath = e.state.path.replace(pageBase + '/#', '');
+          let route = new Route(routePath, this);
+          this.route = route;
+          let ctx = new Context(route, this);
+          this.params = ctx.params;
+
           this.len--;
           this.pageStack.pop();
           addClass($prev, ANIMATE_IN);
@@ -65,14 +72,16 @@ class Router {
   }
   _onhashchange(e) {
     let newURL = e.newURL;
-    let route = newURL.split('#')[1];
+    let splitRoute = newURL.split('#')[1];
+    let route = splitRoute.split('?')[0];
     if (route.split('/').length > 2) {
       if (this.len > 1) return;
+      console.log();
       this.switchTab(route);
     }
   }
   _handleMatched() {
-    const matched = this.route.matched;
+    const matched = [...this.route.matched];
     matched.shift();
     // const page = matched.shift();
     if (matched.length > 0) {
@@ -111,7 +120,6 @@ class Router {
     this.route = route;
 
     let ctx = new Context(route, this);
-    this.current = ctx.path;
     this.params = ctx.params;
 
     let toArr = route.toArr;
@@ -159,13 +167,16 @@ class Router {
     this.route = route;
 
     let ctx = new Context(route, this);
-    this.current = ctx.path;
     this.params = ctx.params;
+
+    this.pageStack[this.len - 1].path = ctx.path;
+
+    window.history.replaceState(ctx.state, ctx.title, ctx.path);
 
     const pageInfo = this.pageStack[this.len - 1];
     const pageId = pageInfo.pageId;
     const $page = document.querySelector(`div[data-page-id='${pageId}']`);
-    const matched = this.route.matched;
+    const matched = [...this.route.matched];
     matched.shift();
     const InnerPanel = matched.shift().component;
     const $innerPanel = new InnerPanel().$el;
@@ -223,6 +234,7 @@ class Route {
     if (pathname === '/') {
       route = router.routes.find(item => item.path === path);
       if (route.redirect) {
+        this.route = route.redirect;
         to = route.redirect;
       }
     } else {
