@@ -92,8 +92,6 @@ class Index extends Componet {
         $router.navigateTo(item.dataset.linkTo);
       });
     });
-
-    //绑定事件
   }
 }
 

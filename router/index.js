@@ -1,10 +1,10 @@
-import { addClass, removeClass } from '../util/index.js';
+import { addClass, removeClass, removeSiblingClass } from '../util/index.js';
 const hasDocument = 'undefined' !== typeof document;
 const clickEvent = hasDocument && document.ontouchstart ? 'touchstart' : 'click';
 
 const ANIMATE_IN = 'translate-x-100x';
 const ANIMATE_OUT = 'translate-x-minus-100x';
-const ANIMATE_TIME = 500;
+const ANIMATE_TIME = 300;
 
 class Router {
   constructor(options) {
@@ -22,6 +22,7 @@ class Router {
 
     this.hanldeClick = this.hanldeClick.bind(this);
     this._onpopstate = this._onpopstate.bind(this);
+    this._onhashchange = this._onhashchange.bind(this);
   }
 
   base(path) {
@@ -60,13 +61,34 @@ class Router {
         const path = e.state.path;
         this.navigateTo(path, true);
       }
-    } else {
-      this.start();
+    }
+  }
+  _onhashchange(e) {
+    let newURL = e.newURL;
+    let route = newURL.split('#')[1];
+    if (route.split('/').length > 2) {
+      if (this.len > 1) return;
+      this.switchTab(route);
+    }
+  }
+  _handleMatched() {
+    const matched = this.route.matched;
+    matched.shift();
+    // const page = matched.shift();
+    if (matched.length > 0) {
+      let $el = this.el;
+      for (let i = 0; i < matched.length; i++) {
+        let view = $el.querySelector('router-view');
+        const Matched = matched[i].component;
+        let viewEl = new Matched().$el;
+        view.parentNode.replaceChild(viewEl, view);
+      }
     }
   }
 
   configure() {
     window.addEventListener('popstate', this._onpopstate, false);
+    window.addEventListener('hashchange', this._onhashchange, false);
     window.document.addEventListener(clickEvent, this.clickHandler, false);
   }
 
@@ -125,6 +147,8 @@ class Router {
         removeClass($el, ANIMATE_IN);
       }, 0);
     }
+
+    this._handleMatched();
   }
 
   switchTab(path) {
@@ -138,11 +162,32 @@ class Router {
     this.current = ctx.path;
     this.params = ctx.params;
 
-    let toArr = route.toArr;
-
-    if (toArr.length > 1) {
-      console.log(route.matched);
+    const pageInfo = this.pageStack[this.len - 1];
+    const pageId = pageInfo.pageId;
+    const $page = document.querySelector(`div[data-page-id='${pageId}']`);
+    const matched = this.route.matched;
+    matched.shift();
+    const InnerPanel = matched.shift().component;
+    const $innerPanel = new InnerPanel().$el;
+    const $tabPanel = $page.querySelector('.tab-panel');
+    $tabPanel.innerHTML = '';
+    $tabPanel.appendChild($innerPanel);
+    if (matched.length > 0) {
+      for (let i = 0; i < matched.length; i++) {
+        let view = $page.querySelector('router-view');
+        const Matched = matched[i].component;
+        let viewEl = new Matched().$el;
+        view.parentNode.replaceChild(viewEl, view);
+      }
     }
+    window.location.hash = '#' + this.route.toArr.join('');
+    const $tabs = $page.querySelectorAll('.router-link');
+    $tabs.forEach(item => {
+      if (item.dataset.linkTo === this.route.route) {
+        removeSiblingClass(item, 'selected');
+        item.classList.add('selected');
+      }
+    });
   }
 
   navigateBack() {

@@ -1,8 +1,8 @@
-import Page from '../../../components/Page.js';
+import Componet from '../../../components/Componet.js';
 import config from './config.js';
 import listData from './mock.js';
 
-class Find extends Page {
+class Find extends Componet {
   constructor() {
     super();
   }

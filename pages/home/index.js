@@ -19,9 +19,6 @@ class Home extends Page {
     const container = document.createElement('div');
     container.classList.add('page-wrapper');
     container.dataset.pageId = this.uid++;
-    let view = el.querySelector('router-view');
-    let viewEl = new Matched().$el;
-    view.parentNode.replaceChild(viewEl, view);
     container.appendChild(el);
     this.$el = container;
   }
