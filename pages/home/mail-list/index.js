@@ -30,6 +30,7 @@ class AddressBook extends Componet {
         </span>
       </div>
       <div class="content" style="height: 100%; background: #fff;">
+        <div style="text-align: center; padding-top: 80px; font-size: 20px; color: #666;">通讯录-内容</div>
       </div>`;
     this.template = template;
     createDom(template);
