@@ -76,7 +76,6 @@ class Router {
     let route = splitRoute.split('?')[0];
     if (route.split('/').length > 2) {
       if (this.len > 1) return;
-      console.log();
       this.switchTab(route);
     }
   }
